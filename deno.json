@@ -1,0 +1,20 @@
+{
+  "name": "@cuss/cuss2-typescript-models",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "TypeScript models generated from CUSS2 OpenAPI specification",
+  "exports": "./mod.ts",
+  "tasks": {
+    "build": "deno run --allow-read --allow-write --allow-run --allow-env scripts/build.ts",
+    "clean": "deno run --allow-read --allow-write scripts/clean.ts"
+  },
+  "imports": {
+    "@std/fs": "jsr:@std/fs@^1.0.4",
+    "@std/path": "jsr:@std/path@^1.0.6",
+    "@std/yaml": "jsr:@std/yaml@^1.0.5",
+    "openapi-typescript": "npm:openapi-typescript@^7.4.2"
+  },
+  "exclude": [
+    "generated/"
+  ]
+}
