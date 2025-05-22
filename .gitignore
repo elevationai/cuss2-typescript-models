@@ -4,6 +4,9 @@
 # Generated files
 generated/
 
+# Non-commitable
+CUSS2-API.yaml
+
 # Logs
 *.log
 npm-debug.log*
