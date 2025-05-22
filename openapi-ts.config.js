@@ -5,6 +5,7 @@ export default {
   plugins: [
     {
       name: '@hey-api/typescript',
+      enums: 'typescript',
     }
   ],
 }

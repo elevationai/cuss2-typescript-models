@@ -1,6 +1,6 @@
 {
   "name": "@cuss/cuss2-typescript-models",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "description": "TypeScript models generated from CUSS2 OpenAPI specification",
   "exports": "./mod.ts",

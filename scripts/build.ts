@@ -9,25 +9,21 @@ async function removeUnwantedPrefixes(filePath: string) {
   try {
     // Read the generated file
     let content = await Deno.readTextFile(filePath);
-    
+
     // Remove all instances of Cuss2*Domain prefixes from type names and references
     // This covers patterns like: Cuss2BiometricsDomain, Cuss2*Domain, etc.
     content = content.replace(/\bCuss2[A-Za-z]*Domain/g, '');
-    
-    // Handle duplicate CharacteristicsDocumentType by commenting out the second definition
-    const lines = content.split('\n');
-    let firstCharacteristicsFound = false;
-    const processedLines = lines.map(line => {
-      if (line.includes('export type CharacteristicsDocumentType =')) {
-        if (firstCharacteristicsFound) {
-          return `// ${line}`; // Comment out the duplicate
-        }
-        firstCharacteristicsFound = true;
+
+    // Comment out duplicate enum definitions using block comments
+    let enumCount = 0;
+    content = content.replace(
+      /export enum CharacteristicsDocumentType \{[^}]+}/g,
+      (match) => {
+        enumCount++;
+        return enumCount > 1 ? `/* Commenting out duplicate ....\n${match}\n*/` : match;
       }
-      return line;
-    });
-    content = processedLines.join('\n');
-    
+    );
+
     // Write the cleaned content back
     await Deno.writeTextFile(filePath, content);
   } catch (error) {
@@ -71,7 +67,7 @@ async function main() {
     const typesFile = join(OUTPUT_DIR, "types.gen.ts");
     if (await exists(typesFile)) {
       console.log("✅ TypeScript models generated successfully!");
-      
+
       // Postprocess to remove unwanted prefixes
       console.log("🔄 Removing CUSS2 domain prefixes...");
       await removeUnwantedPrefixes(typesFile);

@@ -96,12 +96,21 @@ export type BiometricProviderMessage = {
 /**
  * What type of biometric provider message is expected to be returned.
  */
-export type BiometricProviderMessageType = 'NONE' | 'REQUEST' | 'REQUEST_DATA' | 'RESPONSE';
+export enum BiometricProviderMessageType {
+    NONE = 'NONE',
+    REQUEST = 'REQUEST',
+    REQUEST_DATA = 'REQUEST_DATA',
+    RESPONSE = 'RESPONSE'
+}
 
 /**
  * Characteristics document type.
  */
-export type CharacteristicsDocumentType = 'NONE' | 'REQUEST' | 'RESPONSE';
+export enum CharacteristicsDocumentType {
+    NONE = 'NONE',
+    REQUEST = 'REQUEST',
+    RESPONSE = 'RESPONSE'
+}
 
 /**
  * Common use message document root element.
@@ -304,7 +313,16 @@ export type AuthorizationAmounts = {
  * A string identifying the card brand or scheme that can be accepted for payment.
  *
  */
-export type CardBrand = 'AMEX' | 'CART_BLANCHE' | 'DISCOVER' | 'JCB' | 'MAESTRO' | 'MASTERCARD' | 'SWITCH' | 'VISA';
+export enum CardBrand {
+    AMEX = 'AMEX',
+    CART_BLANCHE = 'CART_BLANCHE',
+    DISCOVER = 'DISCOVER',
+    JCB = 'JCB',
+    MAESTRO = 'MAESTRO',
+    MASTERCARD = 'MASTERCARD',
+    SWITCH = 'SWITCH',
+    VISA = 'VISA'
+}
 
 /**
  * Payment system supported, component-configured or application-requested card brand list.
@@ -317,7 +335,13 @@ export type CardBrandList = {
 /**
  * Characteristics document type.
  */
-// export type CharacteristicsDocumentType = 'NONE' | 'REQUEST' | 'RESPONSE';
+/* Commenting out duplicate ....
+export enum CharacteristicsDocumentType {
+    NONE = 'NONE',
+    REQUEST = 'REQUEST',
+    RESPONSE = 'RESPONSE'
+}
+*/
 
 /**
  * Common use message document root element.
@@ -617,7 +641,11 @@ export type GpParameterList = {
  * if the overridable attribute is true.
  *
  */
-export type MediaType = 'ICC' | 'NFC' | 'RFID';
+export enum MediaType {
+    ICC = 'ICC',
+    NFC = 'NFC',
+    RFID = 'RFID'
+}
 
 /**
  * Payment system supported, component-configured or application-requested media type list.
@@ -635,7 +663,10 @@ export type MerchantId = string;
 /**
  * Operation document type.
  */
-export type OperationDocumentType = 'REQUEST' | 'RESPONSE';
+export enum OperationDocumentType {
+    REQUEST = 'REQUEST',
+    RESPONSE = 'RESPONSE'
+}
 
 /**
  * Acquirer-provided pre-formatted receipt data. This element provides pre-formatted receipt data that is the application’s responsibility to process
@@ -647,7 +678,12 @@ export type ReceiptData = string;
 /**
  * Transaction document type.
  */
-export type TransactionDocumentType = 'NONE' | 'REQUEST' | 'RESPONSE' | 'ACK';
+export enum TransactionDocumentType {
+    NONE = 'NONE',
+    REQUEST = 'REQUEST',
+    RESPONSE = 'RESPONSE',
+    ACK = 'ACK'
+}
 
 /**
  * Acquirer or issuer provided reference to use for subsequent post-authorization or void request (unique transaction identifier, STAN).
@@ -685,7 +721,12 @@ export type ApiAcknowledgement = {
  * *ACK_PARAMETER:* Error in parameters, such as a missing component ID, missing or incorrect data.
  *
  */
-export type AckCodes = 'ACK_OK' | 'ACK_ERROR' | 'ACK_OAUTH_ERROR' | 'ACK_PARAMETER';
+export enum AckCodes {
+    ACK_OK = 'ACK_OK',
+    ACK_ERROR = 'ACK_ERROR',
+    ACK_OAUTH_ERROR = 'ACK_OAUTH_ERROR',
+    ACK_PARAMETER = 'ACK_PARAMETER'
+}
 
 /**
  * Reference or confirmation number for the weighing values, for audit or alibi purposes.
@@ -808,7 +849,17 @@ export type ApplicationState = {
  * *ABANDONED_BAG: * There's a bag left on the conveyor system that needfs to be rmoved manually
  *
  */
-export type ApplicationStateChangeReasonCodes = 'NOT_APPLICABLE' | 'OUT_OF_SERVICE_HOURS' | 'OUT_OF_SERVICE_HARDWARE' | 'OUT_OF_SERVICE_BHS' | 'OUT_OF_SERVICE_CONSUMABLES' | 'OUT_OF_SERVICE_INTERNAL' | 'OUT_OF_SERVICE_DCS' | 'OUT_OF_SERVICE_BACKEND' | 'ABANDONED_BAG';
+export enum ApplicationStateChangeReasonCodes {
+    NOT_APPLICABLE = 'NOT_APPLICABLE',
+    OUT_OF_SERVICE_HOURS = 'OUT_OF_SERVICE_HOURS',
+    OUT_OF_SERVICE_HARDWARE = 'OUT_OF_SERVICE_HARDWARE',
+    OUT_OF_SERVICE_BHS = 'OUT_OF_SERVICE_BHS',
+    OUT_OF_SERVICE_CONSUMABLES = 'OUT_OF_SERVICE_CONSUMABLES',
+    OUT_OF_SERVICE_INTERNAL = 'OUT_OF_SERVICE_INTERNAL',
+    OUT_OF_SERVICE_DCS = 'OUT_OF_SERVICE_DCS',
+    OUT_OF_SERVICE_BACKEND = 'OUT_OF_SERVICE_BACKEND',
+    ABANDONED_BAG = 'ABANDONED_BAG'
+}
 
 /**
  * Application state codes...<p>
@@ -822,7 +873,16 @@ export type ApplicationStateChangeReasonCodes = 'NOT_APPLICABLE' | 'OUT_OF_SERVI
  * *DISABLED:* Platform initiated application state
  *
  */
-export type ApplicationStateCodes = 'INITIALIZE' | 'UNAVAILABLE' | 'AVAILABLE' | 'ACTIVE' | 'STOPPED' | 'RELOAD' | 'SUSPENDED' | 'DISABLED';
+export enum ApplicationStateCodes {
+    INITIALIZE = 'INITIALIZE',
+    UNAVAILABLE = 'UNAVAILABLE',
+    AVAILABLE = 'AVAILABLE',
+    ACTIVE = 'ACTIVE',
+    STOPPED = 'STOPPED',
+    RELOAD = 'RELOAD',
+    SUSPENDED = 'SUSPENDED',
+    DISABLED = 'DISABLED'
+}
 
 /**
  * Applications and platforms use the CUSS 2 Application Transfer Structure for transferring control from one application to another.
@@ -846,7 +906,20 @@ export type ApplicationTransfer = {
 /**
  * The characteristics for the biometrics sub system
  */
-export type BiometricsCharacteristics = 'ASSOCIATE' | 'DISASSOCIATE' | 'ENROLL' | 'GET_ASSOCIATIONS' | 'IDENTIFY' | 'PREVIEW' | 'PURGE' | 'VERIFY' | 'FACE' | 'FINGER' | 'IRIS' | 'PALM';
+export enum BiometricsCharacteristics {
+    ASSOCIATE = 'ASSOCIATE',
+    DISASSOCIATE = 'DISASSOCIATE',
+    ENROLL = 'ENROLL',
+    GET_ASSOCIATIONS = 'GET_ASSOCIATIONS',
+    IDENTIFY = 'IDENTIFY',
+    PREVIEW = 'PREVIEW',
+    PURGE = 'PURGE',
+    VERIFY = 'VERIFY',
+    FACE = 'FACE',
+    FINGER = 'FINGER',
+    IRIS = 'IRIS',
+    PALM = 'PALM'
+}
 
 /**
  * Interface Data Type Codes with the following semantics... <p>
@@ -938,7 +1011,87 @@ export type BiometricsCharacteristics = 'ASSOCIATE' | 'DISASSOCIATE' | 'ENROLL' 
  * *DS_TYPES_BIOMETRIC:* Biometric Interface - CUSS2 Biometrics Domain
  *
  */
-export type CussDataTypes = 'DS_TYPES_ISO' | 'DS_TYPES_VING' | 'DS_TYPES_TESSA' | 'DS_TYPES_SAFLOK' | 'DS_TYPES_TIMELOX' | 'DS_TYPES_KABA_ILCO' | 'DS_TYPES_KABA_ILCO_FOLIO' | 'DS_TYPES_IMAGE_IR' | 'DS_TYPES_IMAGE_VIS' | 'DS_TYPES_IMAGE_UV' | 'DS_TYPES_IMAGE_PHOTO' | 'DS_TYPES_IMAGE_COAX' | 'DS_TYPES_IMAGE_RED' | 'DS_TYPES_IMAGE_GREEN' | 'DS_TYPES_IMAGE_BLUE' | 'DS_TYPES_IMAGE_GS' | 'DS_TYPES_IMAGE_BW' | 'DS_TYPES_IMAGE_BMP' | 'DS_TYPES_IMAGE_GIF' | 'DS_TYPES_IMAGE_TIF' | 'DS_TYPES_IMAGE_PNG' | 'DS_TYPES_IMAGE_JPG' | 'DS_TYPES_IMAGE_XBM' | 'DS_TYPES_IMAGE_XPM' | 'DS_TYPES_IMAGE_PPM' | 'DS_TYPES_VIDEO_AVI' | 'DS_TYPES_VIDEO_MP4' | 'DS_TYPES_VIDEO_MOV' | 'DS_TYPES_VIDEO_MKV' | 'DS_TYPES_VIDEO_WMV' | 'DS_TYPES_CODELINE' | 'DS_TYPES_BARCODE' | 'DS_TYPES_MIWA' | 'DS_TYPES_SCAN_PDF417' | 'DS_TYPES_SCAN_AZTEC' | 'DS_TYPES_SCAN_DMATRIX' | 'DS_TYPES_SCAN_QR' | 'DS_TYPES_SCAN_CODE39' | 'DS_TYPES_SCAN_CODE128' | 'DS_TYPES_SCAN_CODE2OF5' | 'DS_TYPES_ISO7816' | 'DS_TYPES_PRINT_2S_PAGE' | 'DS_TYPES_PRINT_2S_MULTI' | 'DS_TYPES_PRINT_PDF' | 'DS_TYPES_MIFARE' | 'DS_TYPES_SUICA' | 'DS_TYPES_ISO15961' | 'DS_TYPES_RP1745' | 'DS_TYPES_WEIGHT' | 'DS_TYPES_DIMENSION' | 'DS_TYPES_EPASSPORT_DG1' | 'DS_TYPES_EPASSPORT_DG2' | 'DS_TYPES_EPASSPORT_DG3' | 'DS_TYPES_EPASSPORT_DG4' | 'DS_TYPES_EPASSPORT_DG5' | 'DS_TYPES_EPASSPORT_DG6' | 'DS_TYPES_EPASSPORT_DG7' | 'DS_TYPES_EPASSPORT_DG8' | 'DS_TYPES_EPASSPORT_DG9' | 'DS_TYPES_EPASSPORT_DG10' | 'DS_TYPES_EPASSPORT_DG11' | 'DS_TYPES_EPASSPORT_DG12' | 'DS_TYPES_EPASSPORT_DG13' | 'DS_TYPES_EPASSPORT_DG14' | 'DS_TYPES_EPASSPORT_DG15' | 'DS_TYPES_EPASSPORT_DG16' | 'DS_TYPES_EPASSPORT_DG17' | 'DS_TYPES_EPASSPORT_DG18' | 'DS_TYPES_EPASSPORT_DG19' | 'DS_TYPES_EPASSPORT_DG20' | 'DS_TYPES_EPAYMENT' | 'DS_TYPES_ILLUMINATION' | 'DS_TYPES_SSML' | 'DS_TYPES_KEY' | 'DS_TYPES_KEY_UP' | 'DS_TYPES_KEY_DOWN' | 'DS_TYPES_BIOMETRIC' | 'DS_TYPES_PRINT_SVG' | 'DS_TYPES_ITPS';
+export enum CussDataTypes {
+    DS_TYPES_ISO = 'DS_TYPES_ISO',
+    DS_TYPES_VING = 'DS_TYPES_VING',
+    DS_TYPES_TESSA = 'DS_TYPES_TESSA',
+    DS_TYPES_SAFLOK = 'DS_TYPES_SAFLOK',
+    DS_TYPES_TIMELOX = 'DS_TYPES_TIMELOX',
+    DS_TYPES_KABA_ILCO = 'DS_TYPES_KABA_ILCO',
+    DS_TYPES_KABA_ILCO_FOLIO = 'DS_TYPES_KABA_ILCO_FOLIO',
+    DS_TYPES_IMAGE_IR = 'DS_TYPES_IMAGE_IR',
+    DS_TYPES_IMAGE_VIS = 'DS_TYPES_IMAGE_VIS',
+    DS_TYPES_IMAGE_UV = 'DS_TYPES_IMAGE_UV',
+    DS_TYPES_IMAGE_PHOTO = 'DS_TYPES_IMAGE_PHOTO',
+    DS_TYPES_IMAGE_COAX = 'DS_TYPES_IMAGE_COAX',
+    DS_TYPES_IMAGE_RED = 'DS_TYPES_IMAGE_RED',
+    DS_TYPES_IMAGE_GREEN = 'DS_TYPES_IMAGE_GREEN',
+    DS_TYPES_IMAGE_BLUE = 'DS_TYPES_IMAGE_BLUE',
+    DS_TYPES_IMAGE_GS = 'DS_TYPES_IMAGE_GS',
+    DS_TYPES_IMAGE_BW = 'DS_TYPES_IMAGE_BW',
+    DS_TYPES_IMAGE_BMP = 'DS_TYPES_IMAGE_BMP',
+    DS_TYPES_IMAGE_GIF = 'DS_TYPES_IMAGE_GIF',
+    DS_TYPES_IMAGE_TIF = 'DS_TYPES_IMAGE_TIF',
+    DS_TYPES_IMAGE_PNG = 'DS_TYPES_IMAGE_PNG',
+    DS_TYPES_IMAGE_JPG = 'DS_TYPES_IMAGE_JPG',
+    DS_TYPES_IMAGE_XBM = 'DS_TYPES_IMAGE_XBM',
+    DS_TYPES_IMAGE_XPM = 'DS_TYPES_IMAGE_XPM',
+    DS_TYPES_IMAGE_PPM = 'DS_TYPES_IMAGE_PPM',
+    DS_TYPES_VIDEO_AVI = 'DS_TYPES_VIDEO_AVI',
+    DS_TYPES_VIDEO_MP4 = 'DS_TYPES_VIDEO_MP4',
+    DS_TYPES_VIDEO_MOV = 'DS_TYPES_VIDEO_MOV',
+    DS_TYPES_VIDEO_MKV = 'DS_TYPES_VIDEO_MKV',
+    DS_TYPES_VIDEO_WMV = 'DS_TYPES_VIDEO_WMV',
+    DS_TYPES_CODELINE = 'DS_TYPES_CODELINE',
+    DS_TYPES_BARCODE = 'DS_TYPES_BARCODE',
+    DS_TYPES_MIWA = 'DS_TYPES_MIWA',
+    DS_TYPES_SCAN_PDF417 = 'DS_TYPES_SCAN_PDF417',
+    DS_TYPES_SCAN_AZTEC = 'DS_TYPES_SCAN_AZTEC',
+    DS_TYPES_SCAN_DMATRIX = 'DS_TYPES_SCAN_DMATRIX',
+    DS_TYPES_SCAN_QR = 'DS_TYPES_SCAN_QR',
+    DS_TYPES_SCAN_CODE39 = 'DS_TYPES_SCAN_CODE39',
+    DS_TYPES_SCAN_CODE128 = 'DS_TYPES_SCAN_CODE128',
+    DS_TYPES_SCAN_CODE2OF5 = 'DS_TYPES_SCAN_CODE2OF5',
+    DS_TYPES_ISO7816 = 'DS_TYPES_ISO7816',
+    DS_TYPES_PRINT_2S_PAGE = 'DS_TYPES_PRINT_2S_PAGE',
+    DS_TYPES_PRINT_2S_MULTI = 'DS_TYPES_PRINT_2S_MULTI',
+    DS_TYPES_PRINT_PDF = 'DS_TYPES_PRINT_PDF',
+    DS_TYPES_MIFARE = 'DS_TYPES_MIFARE',
+    DS_TYPES_SUICA = 'DS_TYPES_SUICA',
+    DS_TYPES_ISO15961 = 'DS_TYPES_ISO15961',
+    DS_TYPES_RP1745 = 'DS_TYPES_RP1745',
+    DS_TYPES_WEIGHT = 'DS_TYPES_WEIGHT',
+    DS_TYPES_DIMENSION = 'DS_TYPES_DIMENSION',
+    DS_TYPES_EPASSPORT_DG1 = 'DS_TYPES_EPASSPORT_DG1',
+    DS_TYPES_EPASSPORT_DG2 = 'DS_TYPES_EPASSPORT_DG2',
+    DS_TYPES_EPASSPORT_DG3 = 'DS_TYPES_EPASSPORT_DG3',
+    DS_TYPES_EPASSPORT_DG4 = 'DS_TYPES_EPASSPORT_DG4',
+    DS_TYPES_EPASSPORT_DG5 = 'DS_TYPES_EPASSPORT_DG5',
+    DS_TYPES_EPASSPORT_DG6 = 'DS_TYPES_EPASSPORT_DG6',
+    DS_TYPES_EPASSPORT_DG7 = 'DS_TYPES_EPASSPORT_DG7',
+    DS_TYPES_EPASSPORT_DG8 = 'DS_TYPES_EPASSPORT_DG8',
+    DS_TYPES_EPASSPORT_DG9 = 'DS_TYPES_EPASSPORT_DG9',
+    DS_TYPES_EPASSPORT_DG10 = 'DS_TYPES_EPASSPORT_DG10',
+    DS_TYPES_EPASSPORT_DG11 = 'DS_TYPES_EPASSPORT_DG11',
+    DS_TYPES_EPASSPORT_DG12 = 'DS_TYPES_EPASSPORT_DG12',
+    DS_TYPES_EPASSPORT_DG13 = 'DS_TYPES_EPASSPORT_DG13',
+    DS_TYPES_EPASSPORT_DG14 = 'DS_TYPES_EPASSPORT_DG14',
+    DS_TYPES_EPASSPORT_DG15 = 'DS_TYPES_EPASSPORT_DG15',
+    DS_TYPES_EPASSPORT_DG16 = 'DS_TYPES_EPASSPORT_DG16',
+    DS_TYPES_EPASSPORT_DG17 = 'DS_TYPES_EPASSPORT_DG17',
+    DS_TYPES_EPASSPORT_DG18 = 'DS_TYPES_EPASSPORT_DG18',
+    DS_TYPES_EPASSPORT_DG19 = 'DS_TYPES_EPASSPORT_DG19',
+    DS_TYPES_EPASSPORT_DG20 = 'DS_TYPES_EPASSPORT_DG20',
+    DS_TYPES_EPAYMENT = 'DS_TYPES_EPAYMENT',
+    DS_TYPES_ILLUMINATION = 'DS_TYPES_ILLUMINATION',
+    DS_TYPES_SSML = 'DS_TYPES_SSML',
+    DS_TYPES_KEY = 'DS_TYPES_KEY',
+    DS_TYPES_KEY_UP = 'DS_TYPES_KEY_UP',
+    DS_TYPES_KEY_DOWN = 'DS_TYPES_KEY_DOWN',
+    DS_TYPES_BIOMETRIC = 'DS_TYPES_BIOMETRIC',
+    DS_TYPES_PRINT_SVG = 'DS_TYPES_PRINT_SVG',
+    DS_TYPES_ITPS = 'DS_TYPES_ITPS'
+}
 
 /**
  * The characteristics for each component within the CUSS device.
@@ -1083,7 +1236,11 @@ export type ComponentList = Array<EnvironmentComponent>;
  * *UNVAILABLE:* Error condition that requires manual intervention
  *
  */
-export type ComponentState = 'READY' | 'BUSY' | 'UNAVAILABLE';
+export enum ComponentState {
+    READY = 'READY',
+    BUSY = 'BUSY',
+    UNAVAILABLE = 'UNAVAILABLE'
+}
 
 /**
  * Virtual component types with the following semantics... <p>
@@ -1107,7 +1264,26 @@ export type ComponentState = 'READY' | 'BUSY' | 'UNAVAILABLE';
  * *APPLICATION:* Used to query the state and/or characteristics of a CUSS application
  *
  */
-export type ComponentTypes = 'CAPTURE' | 'DISPENSER' | 'FEEDER' | 'DATA_INPUT' | 'DATA_OUTPUT' | 'USER_INPUT' | 'USER_OUTPUT' | 'MEDIA_INPUT' | 'MEDIA_OUTPUT' | 'STORAGE' | 'DISPLAY' | 'NETWORK' | 'BAGGAGE_SCALE' | 'INSERTION_BELT' | 'VERIFICATION_BELT' | 'PARKING_BELT' | 'ANNOUNCEMENT' | 'APPLICATION';
+export enum ComponentTypes {
+    CAPTURE = 'CAPTURE',
+    DISPENSER = 'DISPENSER',
+    FEEDER = 'FEEDER',
+    DATA_INPUT = 'DATA_INPUT',
+    DATA_OUTPUT = 'DATA_OUTPUT',
+    USER_INPUT = 'USER_INPUT',
+    USER_OUTPUT = 'USER_OUTPUT',
+    MEDIA_INPUT = 'MEDIA_INPUT',
+    MEDIA_OUTPUT = 'MEDIA_OUTPUT',
+    STORAGE = 'STORAGE',
+    DISPLAY = 'DISPLAY',
+    NETWORK = 'NETWORK',
+    BAGGAGE_SCALE = 'BAGGAGE_SCALE',
+    INSERTION_BELT = 'INSERTION_BELT',
+    VERIFICATION_BELT = 'VERIFICATION_BELT',
+    PARKING_BELT = 'PARKING_BELT',
+    ANNOUNCEMENT = 'ANNOUNCEMENT',
+    APPLICATION = 'APPLICATION'
+}
 
 export type DataRecord = {
     dataStatus?: DataStatus;
@@ -1138,7 +1314,15 @@ export type DataRecordList = Array<DataRecord>;
  * *DS_MISMATCH:* Document read but data inconsistent with security feature
  *
  */
-export type DataStatus = 'DS_OK' | 'DS_CORRUPTED' | 'DS_INCOMPLETE' | 'DS_ZEROLENGTH' | 'DS_DOCUMENT_AUTHENTICATION_FAILED' | 'DS_INVALID' | 'DS_MISMATCH';
+export enum DataStatus {
+    DS_OK = 'DS_OK',
+    DS_CORRUPTED = 'DS_CORRUPTED',
+    DS_INCOMPLETE = 'DS_INCOMPLETE',
+    DS_ZEROLENGTH = 'DS_ZEROLENGTH',
+    DS_DOCUMENT_AUTHENTICATION_FAILED = 'DS_DOCUMENT_AUTHENTICATION_FAILED',
+    DS_INVALID = 'DS_INVALID',
+    DS_MISMATCH = 'DS_MISMATCH'
+}
 
 /**
  * XML formatted device help text element to be inserted into applications audio output.
@@ -1212,7 +1396,29 @@ export type DeviceHelpInstructionType = {
  * *DISPLAY:* Device represents a display (e.g. a touch screen)
  *
  */
-export type DeviceTypes = 'NON_APPLICABLE_DEVICE_TYPE' | 'PRINT' | 'READ' | 'MOTORIZED' | 'DIP' | 'SWIPE' | 'CONTACTLESS' | 'HANDHELD' | 'INSERT' | 'DISPENSE' | 'CAPTURE' | 'CONVEYOR' | 'SCALE' | 'CAMERA' | 'FLATBED' | 'CHIP_AND_PIN' | 'EXTERNAL' | 'BIOMETRICS' | 'ASSISTIVE' | 'ILLUMINATION' | 'DISPLAY';
+export enum DeviceTypes {
+    NON_APPLICABLE_DEVICE_TYPE = 'NON_APPLICABLE_DEVICE_TYPE',
+    PRINT = 'PRINT',
+    READ = 'READ',
+    MOTORIZED = 'MOTORIZED',
+    DIP = 'DIP',
+    SWIPE = 'SWIPE',
+    CONTACTLESS = 'CONTACTLESS',
+    HANDHELD = 'HANDHELD',
+    INSERT = 'INSERT',
+    DISPENSE = 'DISPENSE',
+    CAPTURE = 'CAPTURE',
+    CONVEYOR = 'CONVEYOR',
+    SCALE = 'SCALE',
+    CAMERA = 'CAMERA',
+    FLATBED = 'FLATBED',
+    CHIP_AND_PIN = 'CHIP_AND_PIN',
+    EXTERNAL = 'EXTERNAL',
+    BIOMETRICS = 'BIOMETRICS',
+    ASSISTIVE = 'ASSISTIVE',
+    ILLUMINATION = 'ILLUMINATION',
+    DISPLAY = 'DISPLAY'
+}
 
 export type EnvironmentComponent = {
     /**
@@ -1286,7 +1492,11 @@ export type EnvironmentLevel = {
  * NORMAL:* Normal processing occurs
  *
  */
-export type EventCategories = 'ALARM' | 'WARNING' | 'NORMAL';
+export enum EventCategories {
+    ALARM = 'ALARM',
+    WARNING = 'WARNING',
+    NORMAL = 'NORMAL'
+}
 
 /**
  * Relations for all events <p>
@@ -1294,7 +1504,10 @@ export type EventCategories = 'ALARM' | 'WARNING' | 'NORMAL';
  * *UNSOLICITED:* Sent by the platform because of any internal change, not related to any request.
  *
  */
-export type EventModes = 'SOLICITED' | 'UNSOLICITED';
+export enum EventModes {
+    SOLICITED = 'SOLICITED',
+    UNSOLICITED = 'UNSOLICITED'
+}
 
 /**
  * Categorization of publicity for the various events<p>
@@ -1303,7 +1516,11 @@ export type EventModes = 'SOLICITED' | 'UNSOLICITED';
  * *PLATFORM:* Sent internally between CUSS Application Manager, CLA, and the Component Interface
  *
  */
-export type EventTypes = 'PRIVATE' | 'PUBLIC' | 'PLATFORM';
+export enum EventTypes {
+    PRIVATE = 'PRIVATE',
+    PUBLIC = 'PUBLIC',
+    PLATFORM = 'PLATFORM'
+}
 
 /**
  * The location definition for CUSS devices.
@@ -1358,7 +1575,31 @@ export type Location = {
  * *DATASTRUCTURE:* XML or JSON formatted structured data
  *
  */
-export type MediaTypes = 'CARD' | 'CHIP' | 'BARCODE' | 'TICKET' | 'RECEIPT' | 'BOARDINGPASS' | 'BAGGAGETAG' | 'HEAVYTAG' | 'RFID_BAGGAGETAG' | 'BAGGAGE' | 'PASSPORT' | 'IDCARD' | 'VISA' | 'DRIVERLICENSE' | 'RFID' | 'NFC' | 'OCR' | 'IMAGE' | 'PRINTED' | 'AUDIO' | 'VISUAL' | 'TOUCH' | 'DATASTRUCTURE';
+export enum MediaTypes {
+    CARD = 'CARD',
+    CHIP = 'CHIP',
+    BARCODE = 'BARCODE',
+    TICKET = 'TICKET',
+    RECEIPT = 'RECEIPT',
+    BOARDINGPASS = 'BOARDINGPASS',
+    BAGGAGETAG = 'BAGGAGETAG',
+    HEAVYTAG = 'HEAVYTAG',
+    RFID_BAGGAGETAG = 'RFID_BAGGAGETAG',
+    BAGGAGE = 'BAGGAGE',
+    PASSPORT = 'PASSPORT',
+    IDCARD = 'IDCARD',
+    VISA = 'VISA',
+    DRIVERLICENSE = 'DRIVERLICENSE',
+    RFID = 'RFID',
+    NFC = 'NFC',
+    OCR = 'OCR',
+    IMAGE = 'IMAGE',
+    PRINTED = 'PRINTED',
+    AUDIO = 'AUDIO',
+    VISUAL = 'VISUAL',
+    TOUCH = 'TOUCH',
+    DATASTRUCTURE = 'DATASTRUCTURE'
+}
 
 /**
  * Messagecodes related to system, applications and platform directives/devices.<p>
@@ -1448,7 +1689,86 @@ export type MediaTypes = 'CARD' | 'CHIP' | 'BARCODE' | 'TICKET' | 'RECEIPT' | 'B
  * *BAGGAGE_OPERATIONAL_STOP:* Staff temporarily suspended baggage handling. - *private + platform*<p>
  *
  */
-export type MessageCodes = 'OK' | 'CANCELLED' | 'WRONG_SYSTEM_STATE' | 'WRONG_APPLICATION_STATE' | 'OUT_OF_SEQUENCE' | 'TIMEOUT' | 'FORMAT_ERROR' | 'LENGTH_ERROR' | 'THRESHOLD_ERROR' | 'THRESHOLD_USAGE' | 'DATA_MISSING' | 'DATA_PRESENT' | 'SOFTWARE_ERROR' | 'CRITICAL_SOFTWARE_ERROR' | 'HARDWARE_ERROR' | 'NOT_REACHABLE' | 'NOT_RESPONDING' | 'SESSION_TIMEOUT' | 'KILL_TIMEOUT' | 'TRANSFER_REQUEST' | 'SYSTEM_REQUEST' | 'SYSTEM_SHUTDOWN' | 'DEVICE_REQUEST' | 'MEDIA_JAMMED' | 'MEDIA_MISPLACED' | 'MEDIA_PRESENT' | 'MEDIA_ABSENT' | 'MEDIA_EMPTY' | 'MEDIA_DAMAGED' | 'MEDIA_INCOMPLETELY_INSERTED' | 'MEDIA_HIGH' | 'MEDIA_FULL' | 'MEDIA_LOW' | 'BAGGAGE_FULL' | 'BAGGAGE_UNDETECTED' | 'BAGGAGE_PRESENT' | 'BAGGAGE_ABSENT' | 'BAGGAGE_OVERSIZED' | 'BAGGAGE_TOO_MANY_BAGS' | 'BAGGAGE_UNEXPECTED_BAG' | 'BAGGAGE_TOO_HIGH' | 'BAGGAGE_TOO_LONG' | 'BAGGAGE_TOO_FLAT' | 'BAGGAGE_TOO_SHORT' | 'BAGGAGE_TOO_WIDE' | 'BAGGAGE_TOO_SMALL' | 'BAGGAGE_INVALID_DATA' | 'BAGGAGE_WEIGHT_OUT_OF_RANGE' | 'BAGGAGE_JAMMED' | 'BAGGAGE_WRONG_INSERTED' | 'BAGGAGE_EMERGENCY_STOP' | 'BAGGAGE_RESTLESS' | 'BAGGAGE_TRANSPORT_BUSY' | 'BAGGAGE_MISTRACKED' | 'BAGGAGE_FORWARD_FAILED' | 'BAGGAGE_BACKWARD_FAILED' | 'BAGGAGE_UNEXPECTED_CHANGE' | 'BAGGAGE_ACCEPTED' | 'BAGGAGE_DELIVERED' | 'BAGGAGE_INTERFERENCE_USER' | 'BAGGAGE_INTRUSION_SAFETY' | 'BAGGAGE_NOT_CONVEYABLE' | 'BAGGAGE_IRREGULAR_BAG' | 'BAGGAGE_BAG_WITH_STRAPS' | 'BAGGAGE_UPRIGHT_BAG' | 'BAGGAGE_HANDLE_EXTENDED' | 'BAGGAGE_MULTIPLE_BAGS' | 'BAGGAGE_SLOPED_BAG' | 'BAGGAGE_VOLUME_NOT_DETERMINABLE' | 'BAGGAGE_TUB_REQUIRED' | 'BAGGAGE_OVERFLOW_TUB' | 'BAGGAGE_XRAY_SUSPICIOUS' | 'BAGGAGE_MAINTENANCE_MODE' | 'BAGGAGE_FORCEBAG_MODE' | 'BAGGAGE_MANUAL_MODE' | 'BAGGAGE_OFFBHS_MODE' | 'BAGGAGE_SUSPENDED_MODE' | 'BAGGAGE_OPERATIONAL_STOP';
+export enum MessageCodes {
+    OK = 'OK',
+    CANCELLED = 'CANCELLED',
+    WRONG_SYSTEM_STATE = 'WRONG_SYSTEM_STATE',
+    WRONG_APPLICATION_STATE = 'WRONG_APPLICATION_STATE',
+    OUT_OF_SEQUENCE = 'OUT_OF_SEQUENCE',
+    TIMEOUT = 'TIMEOUT',
+    FORMAT_ERROR = 'FORMAT_ERROR',
+    LENGTH_ERROR = 'LENGTH_ERROR',
+    THRESHOLD_ERROR = 'THRESHOLD_ERROR',
+    THRESHOLD_USAGE = 'THRESHOLD_USAGE',
+    DATA_MISSING = 'DATA_MISSING',
+    DATA_PRESENT = 'DATA_PRESENT',
+    SOFTWARE_ERROR = 'SOFTWARE_ERROR',
+    CRITICAL_SOFTWARE_ERROR = 'CRITICAL_SOFTWARE_ERROR',
+    HARDWARE_ERROR = 'HARDWARE_ERROR',
+    NOT_REACHABLE = 'NOT_REACHABLE',
+    NOT_RESPONDING = 'NOT_RESPONDING',
+    SESSION_TIMEOUT = 'SESSION_TIMEOUT',
+    KILL_TIMEOUT = 'KILL_TIMEOUT',
+    TRANSFER_REQUEST = 'TRANSFER_REQUEST',
+    SYSTEM_REQUEST = 'SYSTEM_REQUEST',
+    SYSTEM_SHUTDOWN = 'SYSTEM_SHUTDOWN',
+    DEVICE_REQUEST = 'DEVICE_REQUEST',
+    MEDIA_JAMMED = 'MEDIA_JAMMED',
+    MEDIA_MISPLACED = 'MEDIA_MISPLACED',
+    MEDIA_PRESENT = 'MEDIA_PRESENT',
+    MEDIA_ABSENT = 'MEDIA_ABSENT',
+    MEDIA_EMPTY = 'MEDIA_EMPTY',
+    MEDIA_DAMAGED = 'MEDIA_DAMAGED',
+    MEDIA_INCOMPLETELY_INSERTED = 'MEDIA_INCOMPLETELY_INSERTED',
+    MEDIA_HIGH = 'MEDIA_HIGH',
+    MEDIA_FULL = 'MEDIA_FULL',
+    MEDIA_LOW = 'MEDIA_LOW',
+    BAGGAGE_FULL = 'BAGGAGE_FULL',
+    BAGGAGE_UNDETECTED = 'BAGGAGE_UNDETECTED',
+    BAGGAGE_PRESENT = 'BAGGAGE_PRESENT',
+    BAGGAGE_ABSENT = 'BAGGAGE_ABSENT',
+    BAGGAGE_OVERSIZED = 'BAGGAGE_OVERSIZED',
+    BAGGAGE_TOO_MANY_BAGS = 'BAGGAGE_TOO_MANY_BAGS',
+    BAGGAGE_UNEXPECTED_BAG = 'BAGGAGE_UNEXPECTED_BAG',
+    BAGGAGE_TOO_HIGH = 'BAGGAGE_TOO_HIGH',
+    BAGGAGE_TOO_LONG = 'BAGGAGE_TOO_LONG',
+    BAGGAGE_TOO_FLAT = 'BAGGAGE_TOO_FLAT',
+    BAGGAGE_TOO_SHORT = 'BAGGAGE_TOO_SHORT',
+    BAGGAGE_TOO_WIDE = 'BAGGAGE_TOO_WIDE',
+    BAGGAGE_TOO_SMALL = 'BAGGAGE_TOO_SMALL',
+    BAGGAGE_INVALID_DATA = 'BAGGAGE_INVALID_DATA',
+    BAGGAGE_WEIGHT_OUT_OF_RANGE = 'BAGGAGE_WEIGHT_OUT_OF_RANGE',
+    BAGGAGE_JAMMED = 'BAGGAGE_JAMMED',
+    BAGGAGE_WRONG_INSERTED = 'BAGGAGE_WRONG_INSERTED',
+    BAGGAGE_EMERGENCY_STOP = 'BAGGAGE_EMERGENCY_STOP',
+    BAGGAGE_RESTLESS = 'BAGGAGE_RESTLESS',
+    BAGGAGE_TRANSPORT_BUSY = 'BAGGAGE_TRANSPORT_BUSY',
+    BAGGAGE_MISTRACKED = 'BAGGAGE_MISTRACKED',
+    BAGGAGE_FORWARD_FAILED = 'BAGGAGE_FORWARD_FAILED',
+    BAGGAGE_BACKWARD_FAILED = 'BAGGAGE_BACKWARD_FAILED',
+    BAGGAGE_UNEXPECTED_CHANGE = 'BAGGAGE_UNEXPECTED_CHANGE',
+    BAGGAGE_ACCEPTED = 'BAGGAGE_ACCEPTED',
+    BAGGAGE_DELIVERED = 'BAGGAGE_DELIVERED',
+    BAGGAGE_INTERFERENCE_USER = 'BAGGAGE_INTERFERENCE_USER',
+    BAGGAGE_INTRUSION_SAFETY = 'BAGGAGE_INTRUSION_SAFETY',
+    BAGGAGE_NOT_CONVEYABLE = 'BAGGAGE_NOT_CONVEYABLE',
+    BAGGAGE_IRREGULAR_BAG = 'BAGGAGE_IRREGULAR_BAG',
+    BAGGAGE_BAG_WITH_STRAPS = 'BAGGAGE_BAG_WITH_STRAPS',
+    BAGGAGE_UPRIGHT_BAG = 'BAGGAGE_UPRIGHT_BAG',
+    BAGGAGE_HANDLE_EXTENDED = 'BAGGAGE_HANDLE_EXTENDED',
+    BAGGAGE_MULTIPLE_BAGS = 'BAGGAGE_MULTIPLE_BAGS',
+    BAGGAGE_SLOPED_BAG = 'BAGGAGE_SLOPED_BAG',
+    BAGGAGE_VOLUME_NOT_DETERMINABLE = 'BAGGAGE_VOLUME_NOT_DETERMINABLE',
+    BAGGAGE_TUB_REQUIRED = 'BAGGAGE_TUB_REQUIRED',
+    BAGGAGE_OVERFLOW_TUB = 'BAGGAGE_OVERFLOW_TUB',
+    BAGGAGE_XRAY_SUSPICIOUS = 'BAGGAGE_XRAY_SUSPICIOUS',
+    BAGGAGE_MAINTENANCE_MODE = 'BAGGAGE_MAINTENANCE_MODE',
+    BAGGAGE_FORCEBAG_MODE = 'BAGGAGE_FORCEBAG_MODE',
+    BAGGAGE_MANUAL_MODE = 'BAGGAGE_MANUAL_MODE',
+    BAGGAGE_OFFBHS_MODE = 'BAGGAGE_OFFBHS_MODE',
+    BAGGAGE_SUSPENDED_MODE = 'BAGGAGE_SUSPENDED_MODE',
+    BAGGAGE_OPERATIONAL_STOP = 'BAGGAGE_OPERATIONAL_STOP'
+}
 
 /**
  * Describes the type of the navigation pad...<p>
@@ -1459,7 +1779,13 @@ export type MessageCodes = 'OK' | 'CANCELLED' | 'WRONG_SYSTEM_STATE' | 'WRONG_AP
  * *AUDIONAV_6_KEY_BAR:* The STORM audio navigation pad with 6 keys in horizontal order'
  *
  */
-export type NavigationTypes = 'NON_APPLICABLE_NAVIGATION_TYPE' | 'NAVPAD_5_KEY' | 'NAVPAD_8_KEY' | 'AUDIONAV_6_KEY' | 'AUDIONAV_6_KEY_BAR';
+export enum NavigationTypes {
+    NON_APPLICABLE_NAVIGATION_TYPE = 'NON_APPLICABLE_NAVIGATION_TYPE',
+    NAVPAD_5_KEY = 'NAVPAD_5_KEY',
+    NAVPAD_8_KEY = 'NAVPAD_8_KEY',
+    AUDIONAV_6_KEY = 'AUDIONAV_6_KEY',
+    AUDIONAV_6_KEY_BAR = 'AUDIONAV_6_KEY_BAR'
+}
 
 /**
  * Correlation ID definition for tracking purposes. - This GUID is platform generated and stored in the platform logs. The ID helps to reconcile log entries on different systems. - If there's currently no passenger session active the ID shall be 'NONE' or 'none' for unsolicited events.
@@ -1470,7 +1796,19 @@ export type PassengerSessionId = string;
 /**
  * The characteristics of the payments sub system
  */
-export type PaymentsCharacteristics = 'DEBIT' | 'CREDIT' | 'NFC' | 'AMEX' | 'CART_BLANCHE' | 'DISCOVER' | 'JCB' | 'MAESTRO' | 'MASTERCARD' | 'SWITCH' | 'VISA';
+export enum PaymentsCharacteristics {
+    DEBIT = 'DEBIT',
+    CREDIT = 'CREDIT',
+    NFC = 'NFC',
+    AMEX = 'AMEX',
+    CART_BLANCHE = 'CART_BLANCHE',
+    DISCOVER = 'DISCOVER',
+    JCB = 'JCB',
+    MAESTRO = 'MAESTRO',
+    MASTERCARD = 'MASTERCARD',
+    SWITCH = 'SWITCH',
+    VISA = 'VISA'
+}
 
 /**
  * PlatformData is used to transfer results from (regular) directive calls back to the application.
@@ -1539,7 +1877,27 @@ export type PlatformData = {
  * *peripherals_conveyors_process:* Examine and/or process the bag currently on a belt component to get baggage data like weight, dimensions, LPNs, RFID, and similar. - Directive requires component identifier.<br>
  *
  */
-export type PlatformDirectives = 'platform_environment' | 'platform_components' | 'platform_applications_staterequest' | 'platform_applications_transferrequest' | 'platform_applications_acknowledge_accessible' | 'peripherals_announcement_play' | 'peripherals_announcement_pause' | 'peripherals_announcement_resume' | 'peripherals_announcement_stop' | 'peripherals_cancel' | 'peripherals_query' | 'peripherals_send' | 'peripherals_setup' | 'peripherals_userpresent_enable' | 'peripherals_userpresent_disable' | 'peripherals_userpresent_offer' | 'peripherals_conveyors_forward' | 'peripherals_conveyors_backward' | 'peripherals_conveyors_process';
+export enum PlatformDirectives {
+    PLATFORM_ENVIRONMENT = 'platform_environment',
+    PLATFORM_COMPONENTS = 'platform_components',
+    PLATFORM_APPLICATIONS_STATEREQUEST = 'platform_applications_staterequest',
+    PLATFORM_APPLICATIONS_TRANSFERREQUEST = 'platform_applications_transferrequest',
+    PLATFORM_APPLICATIONS_ACKNOWLEDGE_ACCESSIBLE = 'platform_applications_acknowledge_accessible',
+    PERIPHERALS_ANNOUNCEMENT_PLAY = 'peripherals_announcement_play',
+    PERIPHERALS_ANNOUNCEMENT_PAUSE = 'peripherals_announcement_pause',
+    PERIPHERALS_ANNOUNCEMENT_RESUME = 'peripherals_announcement_resume',
+    PERIPHERALS_ANNOUNCEMENT_STOP = 'peripherals_announcement_stop',
+    PERIPHERALS_CANCEL = 'peripherals_cancel',
+    PERIPHERALS_QUERY = 'peripherals_query',
+    PERIPHERALS_SEND = 'peripherals_send',
+    PERIPHERALS_SETUP = 'peripherals_setup',
+    PERIPHERALS_USERPRESENT_ENABLE = 'peripherals_userpresent_enable',
+    PERIPHERALS_USERPRESENT_DISABLE = 'peripherals_userpresent_disable',
+    PERIPHERALS_USERPRESENT_OFFER = 'peripherals_userpresent_offer',
+    PERIPHERALS_CONVEYORS_FORWARD = 'peripherals_conveyors_forward',
+    PERIPHERALS_CONVEYORS_BACKWARD = 'peripherals_conveyors_backward',
+    PERIPHERALS_CONVEYORS_PROCESS = 'peripherals_conveyors_process'
+}
 
 /**
  * A single x-y screen resolution measured in pixels.
@@ -1557,7 +1915,24 @@ export type ScreenResolution = {
  * *CLR_RED...CLR_WHITE:* Illumination device supports the specified color
  *
  */
-export type SupportedColors = 'CLR_RGB' | 'CLR_ON' | 'CLR_OFF' | 'CLR_RED' | 'CLR_GREEN' | 'CLR_BLUE' | 'CLR_DARKRED' | 'CLR_DARKGREEN' | 'CLR_DARKBLUE' | 'CLR_YELLOW' | 'CLR_MAGENTA' | 'CLR_CYAN' | 'CLR_AMBER' | 'CLR_PURPLE' | 'CLR_SPRINGGREEN' | 'CLR_WHITE';
+export enum SupportedColors {
+    CLR_RGB = 'CLR_RGB',
+    CLR_ON = 'CLR_ON',
+    CLR_OFF = 'CLR_OFF',
+    CLR_RED = 'CLR_RED',
+    CLR_GREEN = 'CLR_GREEN',
+    CLR_BLUE = 'CLR_BLUE',
+    CLR_DARKRED = 'CLR_DARKRED',
+    CLR_DARKGREEN = 'CLR_DARKGREEN',
+    CLR_DARKBLUE = 'CLR_DARKBLUE',
+    CLR_YELLOW = 'CLR_YELLOW',
+    CLR_MAGENTA = 'CLR_MAGENTA',
+    CLR_CYAN = 'CLR_CYAN',
+    CLR_AMBER = 'CLR_AMBER',
+    CLR_PURPLE = 'CLR_PURPLE',
+    CLR_SPRINGGREEN = 'CLR_SPRINGGREEN',
+    CLR_WHITE = 'CLR_WHITE'
+}
 
 /**
  * The unique identifier (GUID) for devices and requests and any other purpose that requires a unique identifier.
