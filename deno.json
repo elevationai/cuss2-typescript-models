@@ -14,7 +14,9 @@
     "@std/yaml": "jsr:@std/yaml@^1.0.5",
     "openapi-typescript": "npm:openapi-typescript@^7.4.2"
   },
-  "exclude": [
-    "src/"
-  ]
+  "fmt": {
+    "exclude": [
+      "src/"
+    ]
+  }
 }
