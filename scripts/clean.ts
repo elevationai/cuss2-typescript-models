@@ -6,7 +6,7 @@ const OUTPUT_DIR = "src";
 
 async function main() {
   console.log("🧹 Cleaning generated files...");
-  
+
   try {
     if (await exists(OUTPUT_DIR)) {
       await Deno.remove(OUTPUT_DIR, { recursive: true });

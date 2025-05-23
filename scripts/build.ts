@@ -12,7 +12,7 @@ async function removeUnwantedPrefixes(filePath: string) {
 
     // Remove all instances of Cuss2*Domain prefixes from type names and references
     // This covers patterns like: Cuss2BiometricsDomain, Cuss2*Domain, etc.
-    content = content.replace(/\bCuss2[A-Za-z]*Domain/g, '');
+    content = content.replace(/\bCuss2[A-Za-z]*Domain/g, "");
 
     // Comment out duplicate enum definitions using block comments
     let enumCount = 0;
@@ -20,8 +20,10 @@ async function removeUnwantedPrefixes(filePath: string) {
       /export enum CharacteristicsDocumentType \{[^}]+}/g,
       (match) => {
         enumCount++;
-        return enumCount > 1 ? `/* Commenting out duplicate ....\n${match}\n*/` : match;
-      }
+        return enumCount > 1
+          ? `/* Commenting out duplicate ....\n${match}\n*/`
+          : match;
+      },
     );
 
     // Write the cleaned content back

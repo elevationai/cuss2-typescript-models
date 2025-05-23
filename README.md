@@ -4,7 +4,9 @@ TypeScript models generated from the CUSS2 OpenAPI specification.
 
 ## Overview
 
-This library provides TypeScript types and interfaces generated from the CUSS2 OpenAPI specification, enabling type-safe development when working with CUSS2 APIs.
+This library provides TypeScript types and interfaces generated from the CUSS2
+OpenAPI specification, enabling type-safe development when working with CUSS2
+APIs.
 
 ## Installation
 
@@ -15,15 +17,15 @@ deno add jsr:@cuss/cuss2-typescript-models
 ## Usage
 
 ```typescript
-import { 
-  type BiometricProviderMessage,
+import {
   type AgreementTextType,
-  type AssociationDataItemType 
+  type AssociationDataItemType,
+  type BiometricProviderMessage,
 } from "@cuss/cuss2-typescript-models";
 
 // Use the generated types in your code
 const message: BiometricProviderMessage = {
-  biometricFunctionType: 'ENROLL',
+  biometricFunctionType: "ENROLL",
   // ...
 };
 ```
@@ -44,6 +46,7 @@ deno task build
 ```
 
 This command:
+
 1. Runs `npx @hey-api/openapi-ts` to generate types from `CUSS2-API.yaml`
 2. Automatically removes unwanted `Cuss2*Domain` prefixes
 3. Handles duplicate type definitions
@@ -66,6 +69,7 @@ deno task clean
 ## Build Process
 
 The build script automatically:
+
 - Generates TypeScript models using `@hey-api/openapi-ts`
 - Removes all `Cuss2*Domain` prefixes from type names
 - Comments out duplicate type definitions to prevent conflicts
