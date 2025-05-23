@@ -67,6 +67,8 @@ async function main() {
 
     // Verify that types were generated
     const typesFile = join(OUTPUT_DIR, "types.gen.ts");
+    const indexFile = join(OUTPUT_DIR, "index.ts");
+
     if (await exists(typesFile)) {
       console.log("✅ TypeScript models generated successfully!");
 
@@ -74,6 +76,15 @@ async function main() {
       console.log("🔄 Removing CUSS2 domain prefixes...");
       await removeUnwantedPrefixes(typesFile);
       console.log("✅ Prefixes removed successfully!");
+
+      // Fix the import in index.ts to include .ts extension
+      console.log("🔧 Adding .ts extension to import in index.ts...");
+      if (await exists(indexFile)) {
+        let indexContent = await Deno.readTextFile(indexFile);
+        indexContent = indexContent.replace("./types.gen'", "./types.gen.ts'");
+        await Deno.writeTextFile(indexFile, indexContent);
+        console.log("✅ Fixed import extension in index.ts!");
+      }
     } else {
       console.error("❌ Expected types.gen.ts file was not generated");
       Deno.exit(1);
