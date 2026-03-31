@@ -47,7 +47,7 @@ async function main() {
     // Run @hey-api/openapi-ts to generate TypeScript models
     console.log("🚀 Running @hey-api/openapi-ts...");
     const command = new Deno.Command("npx", {
-      args: ["@hey-api/openapi-ts"],
+      args: ["--yes", "@hey-api/openapi-ts"],
       stdout: "piped",
       stderr: "piped",
     });
