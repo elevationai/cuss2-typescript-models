@@ -75,6 +75,25 @@ async function main() {
       // Postprocess to remove unwanted prefixes
       console.log("🔄 Removing CUSS2 domain prefixes...");
       await removeUnwantedPrefixes(typesFile);
+      if (await exists(indexFile)) {
+        await removeUnwantedPrefixes(indexFile);
+        // Deduplicate export names that collide after prefix removal
+        let indexContent = await Deno.readTextFile(indexFile);
+        indexContent = indexContent.replace(
+          /export \{([^}]+)\}/g,
+          (_match, exports: string) => {
+            const seen = new Set<string>();
+            const deduped = exports.split(",").filter((e) => {
+              const name = e.replace(/\btype\b/g, "").trim();
+              if (seen.has(name)) return false;
+              seen.add(name);
+              return true;
+            });
+            return `export {${deduped.join(",")}}`;
+          },
+        );
+        await Deno.writeTextFile(indexFile, indexContent);
+      }
       console.log("✅ Prefixes removed successfully!");
 
       // Fix the import in index.ts to include .ts extension
