@@ -768,7 +768,7 @@ export type ApplicationActivation = {
     /**
      * The application can use this value to change its look, feel, or behavior.
      */
-    applicationBrand: string;
+    applicationBrand?: string;
     /**
      * Indicates the mode of execution.<p>
      * *MAM:* Multi Application Mode <br>
@@ -848,7 +848,7 @@ export type ApplicationState = {
     /**
      * The platform can track which airline code to use for self activated processes/applications.
      */
-    applicationBrand: string;
+    applicationBrand?: string;
 };
 
 /**
@@ -907,7 +907,7 @@ export type ApplicationTransfer = {
     /**
      * The application can use this value to change its look, feel, or behavior.
      */
-    applicationBrand: string;
+    applicationBrand?: string;
     /**
      * As per RFC3066.- Please refer also to: http://www.lingoes.net/en/translator/langcode.htm
      */
