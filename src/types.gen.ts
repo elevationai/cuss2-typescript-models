@@ -1578,7 +1578,7 @@ export type Location = {
 /**
  * A Media Type describes what the component does and is able to handle/process<p>
  * *NON_APPLICABLE_MEDIATYPE:* Media type doesn't fit in any category <br>
- * # MSR remove: *MAGCARD:* Cards with Mag-Stripes<br>
+ * *MAGCARD:* Cards with Mag-Stripes<br>
  * *JISCARD:* JIS II Magnetic Stripe Encoding (Japanese Industrial Standard)<br>
  * *CARD:* Any card not falling under more specific descriptions<br>
  * *CHIP:* Cards equipped with chips (e.g. Chip & PIN)<br>
@@ -1607,6 +1607,11 @@ export type Location = {
  *
  */
 export enum MediaTypes {
+    // MAGCARD restored: CUSS 2.4 kept MSR support (DS_TYPES_PAYMENT_* and the ePayment
+    // ENCRYPTED_MSR flow are in this same spec revision), so mag-stripe readers still need
+    // their media type to be representable. If MAGCARD is re-removed in the source
+    // CUSS2-API.yaml on the next regeneration, this needs re-applying there.
+    MAGCARD = 'MAGCARD',
     CARD = 'CARD',
     CHIP = 'CHIP',
     BARCODE = 'BARCODE',
