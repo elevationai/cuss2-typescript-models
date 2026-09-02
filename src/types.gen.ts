@@ -1607,10 +1607,12 @@ export type Location = {
  *
  */
 export enum MediaTypes {
-    // MAGCARD restored: CUSS 2.4 kept MSR support (DS_TYPES_PAYMENT_* and the ePayment
-    // ENCRYPTED_MSR flow are in this same spec revision), so mag-stripe readers still need
-    // their media type to be representable. If MAGCARD is re-removed in the source
-    // CUSS2-API.yaml on the next regeneration, this needs re-applying there.
+    // Both are documented in the description above but were never declared, so neither could be
+    // named by anything typing its media list as MediaTypes[]. Both are emitted in practice:
+    // mag-stripe readers advertise MAGCARD, and bridge2to1's UNKNOWN default emits
+    // NON_APPLICABLE_MEDIATYPE. Restored in the spec by williamkapke/cuss2-spec#50 — until that
+    // merges, a regeneration drops them again.
+    NON_APPLICABLE_MEDIATYPE = 'NON_APPLICABLE_MEDIATYPE',
     MAGCARD = 'MAGCARD',
     CARD = 'CARD',
     CHIP = 'CHIP',
