@@ -1,14 +1,20 @@
 {
   "name": "@cuss/cuss2-typescript-models",
-  "version": "2.4.0-nobrand",
+  "version": "2.4.1-beta.1",
   "license": "MIT",
   "description": "TypeScript models generated from CUSS2 OpenAPI specification",
-  "exports": "./mod.ts",
+  "exports": {
+    ".": "./mod.ts",
+    "./modelExtensions": "./modelExtensions.ts",
+    "./componentInterrogation": "./componentInterrogation.ts"
+  },
   "tasks": {
     "build": "deno run --allow-read --allow-write --allow-run --allow-env scripts/build.ts",
-    "clean": "deno run --allow-read --allow-write scripts/clean.ts"
+    "clean": "deno run --allow-read --allow-write scripts/clean.ts",
+    "test": "deno test"
   },
   "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.0",
     "@std/fs": "jsr:@std/fs@^1.0.4",
     "@std/path": "jsr:@std/path@^1.0.6",
     "@std/yaml": "jsr:@std/yaml@^1.0.5",
