@@ -226,6 +226,26 @@ Deno.test("ComponentInterrogation - isBarcodeReader", () => {
 
 Deno.test("ComponentInterrogation - isCardReader", () => {
   const cardReader = createMockComponent({
+    componentType: ComponentTypes.MEDIA_INPUT,
+    componentCharacteristics: [
+      createMockCharacteristics({
+        mediaTypesList: [MediaTypes.CHIP],
+        deviceTypesList: [DeviceTypes.DIP],
+      }),
+    ],
+  });
+
+  const chipFeeder = createMockComponent({
+    componentType: ComponentTypes.FEEDER,
+    componentCharacteristics: [
+      createMockCharacteristics({
+        mediaTypesList: [MediaTypes.CHIP],
+      }),
+    ],
+  });
+
+  const chipDispenser = createMockComponent({
+    componentType: ComponentTypes.DISPENSER,
     componentCharacteristics: [
       createMockCharacteristics({
         mediaTypesList: [MediaTypes.CHIP],
@@ -285,6 +305,8 @@ Deno.test("ComponentInterrogation - isCardReader", () => {
   assertEquals(!!ComponentInterrogation.isCardReader(dipCardReader), true);
   assertEquals(!!ComponentInterrogation.isCardReader(swipeCardReader), true);
   assertEquals(!!ComponentInterrogation.isCardReader(nonCardReader), false);
+  assertEquals(!!ComponentInterrogation.isCardReader(chipFeeder), false);
+  assertEquals(!!ComponentInterrogation.isCardReader(chipDispenser), false);
   assertEquals(
     !!ComponentInterrogation.isCardReader(nonMediaInputCardDip),
     false,
@@ -752,4 +774,20 @@ Deno.test("ComponentInterrogation - handles empty and undefined values gracefull
   assertEquals(!!ComponentInterrogation.isBagTagPrinter(undefinedLists), false);
   assertEquals(!!ComponentInterrogation.isBarcodeReader(undefinedLists), false);
   assertEquals(!!ComponentInterrogation.isCardReader(undefinedLists), false);
+});
+
+Deno.test("ComponentInterrogation - handles missing componentCharacteristics", () => {
+  const noCharacteristicsField = {
+    componentID: 1,
+    componentType: ComponentTypes.FEEDER,
+    componentDescription: "Test Component",
+  } as EnvironmentComponent;
+
+  for (const [name, predicate] of Object.entries(ComponentInterrogation)) {
+    assertEquals(
+      predicate(noCharacteristicsField),
+      name === "isFeeder",
+      name,
+    );
+  }
 });
